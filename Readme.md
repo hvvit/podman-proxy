@@ -1,0 +1,1 @@
+PODMAN_PROXY_USERNAME="admin" PODMAN_PROXY_PASSWORD="test" python3 main.py
