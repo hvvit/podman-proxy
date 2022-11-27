@@ -6,6 +6,9 @@ Flask based application to run reverse proxy with basic http auth on podman sock
 The python application makes sure that podman binary is present in the current environment, Once it confirms the binary is present then it checks for podman proxy username and password exported in the environment. Even if either of the values are not present then the application exits with an error.
 Once everything is verified it starts the podman socket based rest service using the following command `podman system service --log-level=debug --time=0`. This starts the socket service and once the application is exited the socket service is also closed.
 Application then forwards all request on `/podmanproxy` to podman rest socket.
+
+![Alt Architecture](./image.png?raw=true "Demo Architecture")
+
 # Pre-requisites
 Checks before triggering the application
 ## Operating System Checks
@@ -110,7 +113,7 @@ proxy is running!
 [harshvardhan@homeserver podman-proxy]$ curl http://10.44.247.148:8181/podmanproxy/system/df
 Unauthorized Access
 ```
-Call with authentication
+*Call with authentication*
 ```
 [harshvardhan@homeserver podman-proxy]$ curl -u "admin:test" http://10.44.247.148:8181/podmanproxy/system/df
 {"LayersSize":0,"Images":[],"Containers":[],"Volumes":[],"BuildCache":[],"BuilderSize":0}
